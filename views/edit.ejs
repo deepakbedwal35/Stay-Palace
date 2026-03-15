@@ -1,0 +1,67 @@
+<%layout("./layouts/boilerplate") %>
+  <br><br>
+     <div class="row">
+      <div class="col-8 offset-2">
+         <h2>Edit your Listing</h2>
+       <form action="/listings/<%=listing.id%>?_method=PUT" method="POST" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" placeholder="title" class="form-control" value="<%=listing.title %>" required>
+ <div class="valid-feedback">Title is awesome!</div>
+      </div>
+      
+       
+        <!-- <textarea name="description" typeid=""></textarea> -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" name="description" placeholder="description" class="form-control"  value="<%=listing.description%> " required>
+<div class="invalid-feedback">Give a description!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="text" name="image" placeholder="paste image link" class="form-control"  value="<%=listing.image%> " required>
+<div class="invalid-feedback">PLease add a image URL!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="price" placeholder="price" class="form-control"  value="<%=listing.price%>" required>
+<div class="invalid-feedback">Price cannot be empty</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="location" placeholder="location" class="form-control"  value="<%=listing.location%>"  required>
+<div class="invalid-feedback">Location should be valid</div>
+      </div>
+      </div>
+      <div class="col-md-8">
+      <div>
+        <label for="country" class="form-label">Country</label>
+        <input type="text" name="country" placeholder="Country" class="form-control"  value="<%=listing.country%> "  required>
+
+      </div>
+      <div class="invalid-feedback">Country  name should be valid!</div>
+      </div>
+      </div>
+      <br>
+
+      <button class="btn btn-primary">Save changes</button>
+
+    </form>
+   
+    </div>
+    </div>
+
+<script src="/JS/script.js"></script>
+
+
+
+
+
+
+
+   

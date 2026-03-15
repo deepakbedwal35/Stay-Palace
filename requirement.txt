@@ -1,0 +1,7 @@
+npm init
+ejs
+mongoose
+express
+body-parser
+nodemon
+ejs-mate

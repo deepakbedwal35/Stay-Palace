@@ -1,0 +1,36 @@
+ <%layout("./layouts/boilerplate") %>
+
+
+    <!-- index route  -->
+    <h1>Welcome to Stay Palace</h1>
+    <!-- <a href="/listings/new"><button>Become a Host</button></a> -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+             <%for(item of allListings){ %>
+              <a href="/listings/<%=item.id%>" class="listings-link">
+            <div class="card cols " style="width: 18rem;">
+  <img class="card-img-top" src="<%=item.image%>" alt="Card image cap" STYLE="height:20rem;">
+  <!-- it can write on the image -->
+  <div class="card-img-overlay"></div>
+  <div class="card-body ">
+   
+    <p class="card-text">
+      <b><%= item.title%></b>
+      <br>
+      &#8377;<%=item.price%>/night
+      
+      </p>
+    <!-- <a href= class="btn btn-primary">Show in Detail</a> -->
+  </div>
+</div>
+</a>
+            <br>
+     
+        <% } %>
+    </div>
+   
+
+    
+    
+
+
+
