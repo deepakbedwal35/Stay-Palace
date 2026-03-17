@@ -1,0 +1,30 @@
+<div class="col-8 offset">
+            <h4>All Reviews</h4>
+            <ul>
+                
+            <% for(let review of listing.reviews){ %>
+
+                
+                    <div class="card-body" style="border-color: black;">
+                        <h5 class="card-title" >Rating:
+
+                            <% for(let i = 1; i <= 5; i++){ %>
+
+                                <% if(i <= review.rating){ %>
+                                    &#9733;
+                                <% } else { %>
+                                    &#9734;
+                                <% } %>
+                            <% } %>
+                    </h5>
+                        <p class="card-text">
+                            <%= review.comment %>
+                        </p>
+                        <div>by <%= review.author.username %></div>
+                        
+                        <form action="/listings/<%=listing.id%>/reviews/<%=review.id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-secondary mb-3" >Delete</button>
+  </form>
+ <% } %>
+
+ </ul>

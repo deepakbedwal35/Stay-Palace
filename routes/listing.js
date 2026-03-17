@@ -1,65 +1,38 @@
 const express = require('express');
 const router = express.Router();
 const Listing = require('../models/listing');
+const {index ,
+    handleNewListing ,
+    handleShowListing,
+    handleCreateListing , 
+    handleUpdateListing,
+    handleEditListing,
+    handleDeleteListing
+     } = require("../controllers/listing")
+const wrapAsync = require('../utils/wrapAsync');
+const ExpressError = require('../utils/ExpressError');
+const { validateListing , isLoggedIn , isOwner } = require("../middleware");
 
-// Create a new listing
+router
+.route("/")
+.get(wrapAsync(index))
+.post(isLoggedIn, validateListing, wrapAsync(handleCreateListing));
+ 
+router.get("/new", isLoggedIn, handleNewListing);
 
-router.get("/listings" , async (req,res)=>{
-    const allListings = await Listing.find({});
-    console.log(allListings);
-    res.render("index" , {allListings});
+router
+.route("/:id")
+.get(handleShowListing)
+.put(isLoggedIn, isOwner, validateListing, wrapAsync(handleUpdateListing))
+.delete(isLoggedIn, isOwner, wrapAsync(handleDeleteListing));
+
+router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(handleEditListing));
+
+
+
+router.use((err, req, res, next) => {
+    const { statusCode = 500, message = "Something went wrong!" } = err;
+    res.status(statusCode).render("error", { err: { message, statusCode } });
 });
-
-// create new
-router.get("/listings/new",(req,res)=>{
-  res.render("new.ejs")
-})
-// create and add new listings
-router.get("/listings/:id" ,async (req ,res)=>{
-   let {id} = req.params
-  let listing = await Listing.findById(id)
-  res.render("show.ejs" ,{listing})
-
-})
-
-
-router.post("/listings" ,(async(req ,res ,err)=>{
-  // {title}
-
-  
-     let newListing= req.body
-console.log(newListing)
-    
-  
-  await Listing.insertOne(newListing)
-  res.redirect("/listings")
-
- 
-   
-  }
- 
-
-))
-router.put("/listings/:id" ,async(req,res)=>{
-  let {id} = req.params
-  let editListing = req.body
-  let listing = await Listing.findByIdAndUpdate(id , editListing , {new:true})
-  // console.log(editListing)
-  console.log(listing)
-  res.redirect("/listings")
-  
-
-})
-
-
-// Delete Route
-router.delete("/listings/:id" ,(async (req,res)=>{
-  let {id} = req.params
-  let DeletedListing = await Listing.findByIdAndDelete(id)
-  console.log(DeletedListing)
-  res.redirect("/listings")
-  // res.send("Succesful Deleted")
-  
-}))
 
 module.exports = router;

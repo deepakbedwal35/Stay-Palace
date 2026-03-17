@@ -1,7 +1,7 @@
 {
   "name": "staypalace",
   "version": "1.0.0",
-  "description": "",
+  "description": "init -- initilisation folder database data Project Inspired By Airbnb",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
@@ -12,10 +12,29 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "body-parser": "^2.2.2",
+    "connect-flash": "^0.1.1",
     "ejs": "^5.0.1",
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
-    "mongoose": "^9.3.0",
+    "express-session": "^1.19.0",
+    "joi": "^18.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.13.9",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepakbedwal35/Stay-Palace.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/deepakbedwal35/Stay-Palace/issues"
+  },
+  "homepage": "https://github.com/deepakbedwal35/Stay-Palace#readme",
+  "devDependencies": {
     "nodemon": "^3.1.14"
   }
 }

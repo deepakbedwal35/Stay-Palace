@@ -1,14 +1,29 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
-  <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link " href="/listings">Home </a>
-      <a class="nav-item nav-link" href="/listings">All Listings</a>
-      <a class="nav-item nav-link" href="/listings/new">Become a Host</a>
-      <!-- <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
+<nav class="navbar navbar-expand-sm bg-white sticky-top shadow-sm">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+      <span class="brand-name">StayPalace</span>
+    </a>
+    <!-- FIX: Bootstrap 5 uses data-bs-toggle / data-bs-target, not data-toggle/data-target -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-item nav-link" href="/listings">Home</a>
+        <a class="nav-item nav-link" href="/listings">All Listings</a>
+        <a class="nav-item nav-link btn-host" href="/listings/new">
+          <i class="fa-solid fa-plus"></i> Become a Host
+        </a>
+         <a class="nav-item nav-link" href="/users/signup">
+            <i class="fa-solid fa-user-plus"></i> Signup
+          </a>
+
+          <a class="nav-item nav-link" href="/users/login">
+            <i class="fa-solid fa-right-to-bracket"></i> Login
+          </a>
+      </div>
     </div>
   </div>
 </nav>

@@ -1,0 +1,18 @@
+<div class="col-8 offset ">
+        <h4>Leave a Review</h4>
+        <form action="/listings/<%=listing.id%>/reviews" method="POST" class="needs-validation" novalidate>
+
+            <div class="mb-3 mt-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range" required >
+            </div>
+            <div>
+                <label for="comment" class="form-label">Comments</label>
+                <textarea id="comment" name="review[comment]" rows="4" cols="50" class="form-control" required></textarea>
+                <div class="invalid-feedback">Give Comment!</div>
+            </div>
+            <br>
+            <button class="btn btn-primary ">Submit</button>
+        </form>
+
+       </div>
