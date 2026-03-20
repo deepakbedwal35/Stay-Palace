@@ -1,12 +1,14 @@
 <%layout("./layouts/boilerplate") %>
 
-            <div>
-       <div class="card col-10  offset-2" style="border-color:black;">
-        <%= listing.owner.username %>
+<div>
+    <div class="card col-10  offset-2" style="border-color:black;">
+        <!--  listing.owner.username %> -->
         <h3><%=listing.title %></h3>
+
         <div class="row">
             <div class="col-8">
-  <img class="card-img" src="<%=listing.image%>" alt="Card image" style="height:20rem;">
+   
+  <img class="card-img" src="<%=listing.image.url%>" alt="Card image" style="height:20rem;">
   <!-- <div class="card-img-overlay"> -->
     <!-- <h5 class="card-title">Card title</h5> -->
     
@@ -15,37 +17,27 @@
         <%= listing.description %> <br>
         &#8377; <%= listing.price %>/night
 
-
-
     </p>
     <div class="show-btns">
      <a href="/listings/<%=listing.id%>/edit" class="show-link"> <button class="btn btn-danger">Edit</button></a>
             <br> <br>
             <form action="/listings/<%=listing.id%>?_method=DELETE" method="post" class="show-link">
-                <!-- <br> -->
+                
                 <button class="btn btn-secondary ">Delete</button>
             </form>
     </div>
-     </div>
-     </div>
+        </div>
+       </div>
      <hr>
-       <%-include("./reviews/create.ejs") %>
-       <hr>
-       <%-include("./reviews/show.ejs") %>
+     <%-include("./reviews/create") %>
 
 
        
-         
-                   
-               
-                
-               
-            
-            
-
-  </div>
-     
-
+    <hr>
+    <%-include("./reviews/show") %>
+       
+                      
+</div>
 </div>
            
        

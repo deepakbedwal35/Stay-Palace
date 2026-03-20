@@ -1,62 +1,60 @@
 <%layout("./layouts/boilerplate") %>
 
+<div class="container form-page">
+  <div class="form-card">
+    <h2 class="form-card-title">List your space</h2>
+    <p class="form-card-sub">Share your place with guests from around the world.</p>
 
-    <!-- <h1>Become a Host</h1> -->
-     <br><br>
-     <div class="row">
-      <div class="col-8 offset-2">
-    <h2>Add new Listing</h2>
-    <form action="/listings" method="post" class="needs-validation" novalidate>
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text"name="listing[title]" placeholder="title" class="form-control" required>
-        <div class="valid-feedback">Title is awesome!</div>
-
-      </div>
+    <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
       
-       
-        <!-- <textarea name="description" typeid=""></textarea> -->
-      <div class="mb-3">
-        <label for="description" class="form-label" >Description</label>
-        <input type="text" name="listing[description]" placeholder="description" class="form-control" required>
-  <div class="invalid-feedback">Give a description!</div>
+      <div class="mb-form">
+        <label class="form-label-sp">Title *</label>
+        <input type="text" name="listing[title]" class="form-control-sp" placeholder="e.g. Cozy beachfront villa in Goa" required>
+        <div class="invalid-feedback">Please provide a title.</div>
       </div>
 
-      <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-        <input type="text" name="listing[image]" placeholder="paste image link" class="form-control" >
+      <div class="mb-form">
+        <label class="form-label-sp">Description *</label>
+        <textarea name="listing[description]" class="form-control-sp" rows="4" placeholder="Describe your place — what makes it special, what guests can enjoy…" required></textarea>
+        <div class="invalid-feedback">Please add a description.</div>
+      </div>
+      <!-- Image upload -->
+      <div class="mb-form">
+        <label for="image" class="form-label-sp">Upload Listing Image</label>
+        <input type="file" name="listing[image]" class="form-control-sp" placeholder="Upload Image">
+      </div>
+     <!-- Image Link -->
+      <!-- <div class="mb-form">
+        <label class="form-label-sp">Image URL</label>
+        <input type="text" name="listing[image]" class="form-control-sp" placeholder="https://… (leave blank for default image)">
+      </div> -->
 
+      <div class="mb-form">
+        <label class="form-label-sp">Price per night (₹) *</label>
+        <input type="number" name="listing[price]" class="form-control-sp" placeholder="e.g. 3500" min="0" required>
+        <div class="invalid-feedback">Please enter a valid price.</div>
       </div>
 
-      <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" name="listing[price]" placeholder="price" class="form-control" required>
-      
-<div class="invalid-feedback">Please Enter a valid price!</div>
+      <div class="form-row-2 mb-form">
+        <div>
+          <label class="form-label-sp">City / Location *</label>
+          <input type="text" name="listing[location]" class="form-control-sp" placeholder="e.g. Goa" required>
+          <div class="invalid-feedback">Location is required.</div>
+        </div>
+        <div>
+          <label class="form-label-sp">Country *</label>
+          <input type="text" name="listing[country]" class="form-control-sp" placeholder="e.g. India" required>
+          <div class="invalid-feedback">Country is required.</div>
+        </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-4">
-      <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input type="text" name="listing[location]" placeholder="location" class="form-control" required>
-<div class="invalid-feedback">Location should be valid!</div>
-      </div>
-      </div>
-      <div class="col-md-8">
-      <div>
-        <label for="country" class="form-label">Country</label>
-        <input type="text" name="listing[country]" placeholder="Country" class="form-control" required>
-<div class="invalid-feedback">Country  name should be valid!</div>
-      </div>
-      </div>
-      </div>
-      <br>
-
-      <button class="btn btn-danger">Add</button>
-
+      <button type="submit" class="btn-primary-sp">
+        <i class="fa-solid fa-plus me-2"></i>Create Listing
+      </button>
     </form>
-   
-    </div>
-    </div>
 
+    <div class="form-footer-link">
+      <a href="/listings"><i class="fa-solid fa-arrow-left me-1"></i>Back to all listings</a>
+    </div>
+  </div>
+</div>

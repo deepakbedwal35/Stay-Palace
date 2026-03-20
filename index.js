@@ -1,5 +1,5 @@
 const express = require('express');
-
+require("dotenv").config();
 // express session
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true }));  // FIX: parse form body data
 app.use(express.json());
 app.use(methodOverride("_method"));               // FIX: support PUT/DELETE via forms
 app.use(express.static(path.join(__dirname, "public"))); // FIX: serve CSS/JS files
-
+app.use(require("cors")());
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -91,3 +91,5 @@ app.use('/users' , UserRouter);
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+

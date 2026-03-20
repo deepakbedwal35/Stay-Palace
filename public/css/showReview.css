@@ -1,0 +1,124 @@
+
+/* ===== REVIEWS ===== */
+.reviews-section { margin-top: 0; }
+
+.review-card {
+  background: var(--light);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1.5px solid var(--border);
+  transition: all 0.2s;
+}
+
+.review-card:hover { box-shadow: var(--shadow-sm); }
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.review-author-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.review-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand) 0%, #FF8FA3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.review-author-name { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
+.review-date { font-size: 0.75rem; color: var(--muted); }
+
+.review-stars { color: #F59E0B; font-size: 0.85rem; letter-spacing: 0.05em; }
+
+.review-text {
+  font-size: 0.92rem;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.btn-delete-review {
+  background: none;
+  border: 1px solid #FECACA;
+  color: #EF4444;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-delete-review:hover { background: #FEF2F2; }
+
+/* ===== REVIEW FORM ===== */
+.review-form-card {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.review-form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 1.25rem;
+}
+
+.rating-stars-input {
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.rating-stars-input input { display: none; }
+
+.rating-stars-input label {
+  font-size: 1.5rem;
+  color: #D1D5DB;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.rating-stars-input label:hover,
+.rating-stars-input label:hover ~ label,
+.rating-stars-input input:checked ~ label {
+  color: #F59E0B;
+}
+
+.form-control-sp {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--dark);
+  transition: border-color 0.2s;
+  outline: none;
+  resize: vertical;
+  background: white;
+}
+
+.form-control-sp:focus { border-color: var(--brand); }

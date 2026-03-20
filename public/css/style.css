@@ -1,3 +1,9 @@
+
+
+
+
+
+
 /* *{
     background-color: pink;
 } */
@@ -109,5 +115,27 @@
     align-items: center;
     justify-content: space-evenly;
 
+}
+
+
+.btn-primary-sp {
+  width: 100%;
+  background: var(--dark);
+  color: black;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn-primary-sp:hover {
+  background: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,56,92,0.3);
 }
 

@@ -5,7 +5,7 @@ const wrapAsync = require('../utils/wrapAsync');
 // JOi validation schema
 // const { listingSchema } = require('./schema.js');
 const ExpressError = require('../utils/ExpressError');
-const {  validateReview , isLoggedIn , isOwner } = require("../middleware");
+const {  validateReview , isLoggedIn , isReviewAuthor} = require("../middleware");
 const { handleCreateReview, handleDeleteReview } = require('../controllers/review');
 
 
@@ -16,7 +16,7 @@ const { handleCreateReview, handleDeleteReview } = require('../controllers/revie
 router.post("/:id/reviews",validateReview , isLoggedIn, handleCreateReview);
 
 // Delete review
-router.delete("/:id/reviews/:reviewId",isOwner , isLoggedIn , wrapAsync(handleDeleteReview));
+router.delete("/:id/reviews/:reviewId", isReviewAuthor , isLoggedIn , wrapAsync(handleDeleteReview));
 
 router.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong!" } = err;

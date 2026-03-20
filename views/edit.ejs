@@ -17,12 +17,18 @@
         <input type="text" name="listing[description]" placeholder="description" class="form-control"  value="<%=listing.description%> " required>
 <div class="invalid-feedback">Give a description!</div>
       </div>
-
-      <div class="mb-3">
+      <!-- image file -->
+       <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" name="listing[image]" placeholder="Upload Image" class="form-control"  value="<%=listing.image%> " required>
+<div class="invalid-feedback">Upload Image</div>
+      </div>
+       <!-- url -->
+      <!-- <div class="mb-3">
         <label for="image" class="form-label">Image</label>
         <input type="text" name="listing[image]" placeholder="paste image link" class="form-control"  value="<%=listing.image%> " required>
 <div class="invalid-feedback">PLease add a image URL!</div>
-      </div>
+      </div> -->
 
       <div class="mb-3">
         <label for="price" class="form-label">Price</label>

@@ -1,30 +1,44 @@
-<div class="col-8 offset">
-            <h4>All Reviews</h4>
-            <ul>
-                
-            <% for(let review of listing.reviews){ %>
-
-                
-                    <div class="card-body" style="border-color: black;">
-                        <h5 class="card-title" >Rating:
-
-                            <% for(let i = 1; i <= 5; i++){ %>
-
-                                <% if(i <= review.rating){ %>
-                                    &#9733;
-                                <% } else { %>
-                                    &#9734;
-                                <% } %>
-                            <% } %>
-                    </h5>
-                        <p class="card-text">
-                            <%= review.comment %>
-                        </p>
-                        <div>by <%= review.author.username %></div>
-                        
-                        <form action="/listings/<%=listing.id%>/reviews/<%=review.id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-secondary mb-3" >Delete</button>
-  </form>
- <% } %>
-
- </ul>
+<% if(listing.reviews && listing.reviews.length > 0) { %>
+  <h3 class="show-section-title" style="margin-top:2rem;">
+    <i class="fa-solid fa-star" style="color:#F59E0B;font-size:1rem;margin-right:0.4rem;"></i>
+    <%= listing.reviews.length %> Review<%= listing.reviews.length > 1 ? 's' : '' %>
+  </h3>
+  <div class="reviews-section">
+    <% for(let review of listing.reviews) { %>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-author-row">
+            <div class="review-avatar">
+              <%= review.author ? review.author.username.charAt(0).toUpperCase() : '?' %>
+            </div>
+            <div>
+              <div class="review-author-name"><%= review.author ? review.author.username : 'Anonymous' %></div>
+              <div class="review-date">
+                <%= new Date(review.createdAt).toLocaleDateString('en-IN', { year:'numeric', month:'long' }) %>
+              </div>
+            </div>
+          </div>
+          <div class="review-stars">
+            <% for(let i = 1; i <= 5; i++) { %>
+              <% if(i <= review.rating) { %>&#9733;<% } else { %>&#9734;<% } %>
+            <% } %>
+          </div>
+        </div>
+        <p class="review-text"><%= review.comment %></p>
+        <!-- FIX: only review author can delete their own review -->
+       
+          <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn-delete-review">
+              <i class="fa-solid fa-trash me-1"></i>Delete
+            </button>
+          </form>
+        
+      </div>
+    <% } %>
+  </div>
+<% } else { %>
+  <div style="padding:2rem 0;text-align:center;color:var(--muted);">
+    <i class="fa-regular fa-star" style="font-size:2rem;color:var(--border);display:block;margin-bottom:0.75rem;"></i>
+    No reviews yet. Be the first to review!
+  </div>
+<% } %>

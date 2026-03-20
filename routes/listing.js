@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const Listing = require('../models/listing');
+
+const upload = require("../middleware/multer")
+// image uploading
+
+
 const {index ,
-    handleNewListing ,
+    renderNewListing ,
     handleShowListing,
     handleCreateListing , 
     handleUpdateListing,
-    handleEditListing,
+    renderEditListing,
     handleDeleteListing
      } = require("../controllers/listing")
 const wrapAsync = require('../utils/wrapAsync');
@@ -16,17 +20,19 @@ const { validateListing , isLoggedIn , isOwner } = require("../middleware");
 router
 .route("/")
 .get(wrapAsync(index))
-.post(isLoggedIn, validateListing, wrapAsync(handleCreateListing));
+// .post(isLoggedIn, validateListing, wrapAsync(handleCreateListing))
+.post(upload.single("listing[image]"), wrapAsync(handleCreateListing))
+
  
-router.get("/new", isLoggedIn, handleNewListing);
+router.get("/new"  , renderNewListing);
 
 router
 .route("/:id")
 .get(handleShowListing)
-.put(isLoggedIn, isOwner, validateListing, wrapAsync(handleUpdateListing))
+.put(isLoggedIn, isOwner,  upload.single("listing[image]") , validateListing, wrapAsync(handleUpdateListing))
 .delete(isLoggedIn, isOwner, wrapAsync(handleDeleteListing));
 
-router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(handleEditListing));
+router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(renderEditListing));
 
 
 
